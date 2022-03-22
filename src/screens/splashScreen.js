@@ -2,10 +2,10 @@ import React, { Component, useRef, useEffect } from 'react';
 import { View, Image, Text, Animated, StyleSheet } from 'react-native';
 import { useFunctionalOrientaion } from '../utils/responsiveUtils';
 import { main } from '../utils/colors';
-import { transform } from '@babel/core';
 
 
-const Splash = () => {
+
+const Splash = ({ navigation }) => {
 
     const { styles, isPortrait, heightToDp, widthToDp } = useFunctionalOrientaion(responsiveStyles);
 
@@ -26,9 +26,14 @@ const Splash = () => {
         Animated.spring(logoAnim, {
             toValue: 1,
             duration: 2500,
-            stiffness:30,
+            stiffness: 30,
             useNativeDriver: true
-        }).start();
+        }).start(() => {
+            setTimeout(() => {
+                navigation.navigate('Login');
+            }, 1000);
+
+        });
     };
 
 

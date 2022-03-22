@@ -11,6 +11,7 @@ import Home from '../screens/HomeScreen';
 import Cart from '../screens/cartScreen';
 import Test from '../screens/testScreen';
 import Splash from '../screens/splashScreen';
+import Login from '../screens/loginScreen';
 
 
 
@@ -47,7 +48,7 @@ export default function RootNav() {
 
           }}
         />
-        <Stack.Screen name="Home" component={Test}
+        <Stack.Screen name="Login" component={Login}
           options={{
             headerShown: false,
 
