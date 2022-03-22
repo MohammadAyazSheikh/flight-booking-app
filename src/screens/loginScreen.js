@@ -1,9 +1,11 @@
-import React, { Component, useRef, useEffect } from 'react';
+import React, { Component, useRef, useEffect, useState } from 'react';
 import { View, Image, Text, Animated, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { useFunctionalOrientaion } from '../utils/responsiveUtils';
 import Icon from 'react-native-vector-icons/Entypo';
 // import { TextInput } from 'react-native-paper';
 import { main, mainLight } from '../utils/colors';
+import { transform } from '@babel/core';
+import { backColor } from '../utils/config';
 
 
 
@@ -13,6 +15,9 @@ const Login = () => {
     const { styles, isPortrait, heightToDp, widthToDp } = useFunctionalOrientaion(responsiveStyles);
 
     const logoAnim = useRef(new Animated.Value(0)).current;
+    const inputAnim1 = useRef(new Animated.Value(0)).current;
+    const inputAnim2 = useRef(new Animated.Value(0)).current;
+
 
     const scale = logoAnim.interpolate({
         inputRange: [0, 1],
@@ -24,12 +29,39 @@ const Login = () => {
         outputRange: [heightToDp(-20), heightToDp(0)]
     })
 
+    const scaleX1 = inputAnim1.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 1]
+    })
+    const scaleY1 = inputAnim1.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 1]
+    })
+
+    const scaleX2 = inputAnim2.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 1]
+    })
+    const scaleY2 = inputAnim2.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 1]
+    })
+
     const StartAnim = () => {
 
         Animated.spring(logoAnim, {
             toValue: 1,
             duration: 2500,
             stiffness: 30,
+            useNativeDriver: true
+        }).start();
+    };
+
+    const StartInputAnim = (animVal, toValue) => {
+
+        Animated.timing(animVal, {
+            toValue,
+            duration: 500,
             useNativeDriver: true
         }).start();
     };
@@ -54,7 +86,8 @@ const Login = () => {
                 <View style={styles.inputItemViewP}>
                     <View style={styles.iconViewP}>
                         <Icon name='mail' size={widthToDp(10)} color='#FFF' />
-                        <View style={styles.vLineP} />
+                        <View style={[styles.vLineP, { backgroundColor: mainLight }]} />
+                        <Animated.View style={[styles.vLineP, { transform: [{ scaleY: scaleY1 }] }]} />
                     </View>
                     <View style={styles.inputViewP}>
                         <Text style={styles.txtLabelP}>
@@ -63,14 +96,22 @@ const Login = () => {
                         <TextInput
                             placeholder='enter email'
                             style={styles.inputStylesP}
+                            onFocus={() => {
+                                StartInputAnim(inputAnim1, 1);
+                            }}
+                            onBlur={() => {
+                                StartInputAnim(inputAnim1, 0);
+                            }}
                         />
                     </View>
-                    <View style={styles.hLineP} />
+                    <View style={[styles.hLineP, { backgroundColor: mainLight }]} />
+                    <Animated.View style={[styles.hLineP, { transform: [{ scaleX: scaleX1 }] }]} />
                 </View>
                 <View style={[styles.inputItemViewP,]}>
                     <View style={styles.iconViewP}>
                         <Icon name='lock' size={widthToDp(10)} color='#FFF' />
-                        <View style={styles.vLineP} />
+                        <View style={[styles.vLineP, { backgroundColor: mainLight }]} />
+                        <Animated.View style={[styles.vLineP, { transform: [{ scaleY: scaleY2 }] }]} />
                     </View>
                     <View style={styles.inputViewP}>
                         <Text style={styles.txtLabelP}>
@@ -79,12 +120,19 @@ const Login = () => {
                         <TextInput
                             placeholder='enter password'
                             style={styles.inputStylesP}
+                            onFocus={() => {
+                                StartInputAnim(inputAnim2, 1);
+                            }}
+                            onBlur={() => {
+                                StartInputAnim(inputAnim2, 0);
+                            }}
                         />
                         <TouchableOpacity style={styles.btnHidden}>
                             <Icon name='eye' size={widthToDp(5)} color='#FFF' />
                         </TouchableOpacity>
                     </View>
-                    <View style={styles.hLineP} />
+                    <View style={[styles.hLineP, { backgroundColor: mainLight }]} />
+                    <Animated.View style={[styles.hLineP, { transform: [{ scaleX: scaleX2 }] }]} />
                 </View>
             </View>
             <TouchableOpacity style={styles.btnForgetP}>
@@ -132,17 +180,17 @@ function responsiveStyles(screenInfo, w, h) {
         },
         inputGroupViewP: {
             flexDirection: 'column',
-            justifyContent: 'center',
+            justifyContent: 'space-between',
             alignItems: 'center',
             width: w(90),
             height: h(20),
-            marginTop:h(4)
+            marginTop: h(4)
 
         },
 
         inputItemViewP: {
             width: '100%',
-            height: '50%',
+            height: '45%',
             flexDirection: "row"
         },
         hLineP: {
