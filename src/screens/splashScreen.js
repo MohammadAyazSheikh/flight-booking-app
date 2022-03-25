@@ -4,7 +4,6 @@ import { useFunctionalOrientaion } from '../utils/responsiveUtils';
 import { main } from '../utils/colors';
 
 
-
 const Splash = ({ navigation }) => {
 
     const { styles, isPortrait, heightToDp, widthToDp } = useFunctionalOrientaion(responsiveStyles);

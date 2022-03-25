@@ -4,8 +4,6 @@ import { useFunctionalOrientaion } from '../utils/responsiveUtils';
 import Icon from 'react-native-vector-icons/Entypo';
 // import { TextInput } from 'react-native-paper';
 import { main, mainLight } from '../utils/colors';
-import { transform } from '@babel/core';
-import { backColor } from '../utils/config';
 
 
 
@@ -74,7 +72,7 @@ const Login = () => {
 
 
     return (
-        <View style={styles.container} >
+        <View style={isPortrait ? styles.container : { ...styles.container, flexDirection: 'row' }} >
             <Animated.Image source={require('../../assets/images/logoWhite.png')}
                 style={[isPortrait ? styles.imageStyleP : styles.imageStyleL, {
                     transform: [
@@ -82,70 +80,72 @@ const Login = () => {
                         { translateY }
                     ]
                 }]} />
-            <View style={styles.inputGroupViewP}>
-                <View style={styles.inputItemViewP}>
-                    <View style={styles.iconViewP}>
-                        <Icon name='mail' size={widthToDp(10)} color='#FFF' />
-                        <View style={[styles.vLineP, { backgroundColor: mainLight }]} />
-                        <Animated.View style={[styles.vLineP, { transform: [{ scaleY: scaleY1 }] }]} />
+            <View style={isPortrait ? styles.itemViewsP : styles.itemViewsL}>
+                <View style={isPortrait ? styles.inputGroupViewP : styles.inputGroupViewL}>
+                    <View style={styles.inputItemViewP}>
+                        <View style={styles.iconViewP}>
+                            <Icon name='mail' size={isPortrait ? widthToDp(8) : heightToDp(8)} color='#FFF' />
+                            <View style={[styles.vLineP, { backgroundColor: mainLight }]} />
+                            <Animated.View style={[styles.vLineP, { transform: [{ scaleY: scaleY1 }] }]} />
+                        </View>
+                        <View style={styles.inputViewP}>
+                            <Text style={isPortrait ? styles.txtLabelP : styles.txtLabelL}>
+                                Email
+                            </Text>
+                            <TextInput
+                                placeholder='enter email'
+                                style={styles.inputStylesP}
+                                onFocus={() => {
+                                    StartInputAnim(inputAnim1, 1);
+                                }}
+                                onBlur={() => {
+                                    StartInputAnim(inputAnim1, 0);
+                                }}
+                            />
+                        </View>
+                        <View style={[styles.hLineP, { backgroundColor: mainLight }]} />
+                        <Animated.View style={[styles.hLineP, { transform: [{ scaleX: scaleX1 }] }]} />
                     </View>
-                    <View style={styles.inputViewP}>
-                        <Text style={styles.txtLabelP}>
-                            Email
-                        </Text>
-                        <TextInput
-                            placeholder='enter email'
-                            style={styles.inputStylesP}
-                            onFocus={() => {
-                                StartInputAnim(inputAnim1, 1);
-                            }}
-                            onBlur={() => {
-                                StartInputAnim(inputAnim1, 0);
-                            }}
-                        />
+                    <View style={styles.inputItemViewP}>
+                        <View style={styles.iconViewP}>
+                            <Icon name='lock' size={isPortrait ? widthToDp(8) : heightToDp(8)} color='#FFF' />
+                            <View style={[styles.vLineP, { backgroundColor: mainLight }]} />
+                            <Animated.View style={[styles.vLineP, { transform: [{ scaleY: scaleY2 }] }]} />
+                        </View>
+                        <View style={styles.inputViewP}>
+                            <Text style={isPortrait ? styles.txtLabelP : styles.txtLabelL}>
+                                Password
+                            </Text>
+                            <TextInput
+                                placeholder='enter password'
+                                style={styles.inputStylesP}
+                                onFocus={() => {
+                                    StartInputAnim(inputAnim2, 1);
+                                }}
+                                onBlur={() => {
+                                    StartInputAnim(inputAnim2, 0);
+                                }}
+                            />
+                            <TouchableOpacity style={styles.btnHidden}>
+                                <Icon name='eye' size={isPortrait ? widthToDp(5) : heightToDp(5)} color='#FFF' />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={[styles.hLineP, { backgroundColor: mainLight }]} />
+                        <Animated.View style={[styles.hLineP, { transform: [{ scaleX: scaleX2 }] }]} />
                     </View>
-                    <View style={[styles.hLineP, { backgroundColor: mainLight }]} />
-                    <Animated.View style={[styles.hLineP, { transform: [{ scaleX: scaleX1 }] }]} />
                 </View>
-                <View style={[styles.inputItemViewP,]}>
-                    <View style={styles.iconViewP}>
-                        <Icon name='lock' size={widthToDp(10)} color='#FFF' />
-                        <View style={[styles.vLineP, { backgroundColor: mainLight }]} />
-                        <Animated.View style={[styles.vLineP, { transform: [{ scaleY: scaleY2 }] }]} />
-                    </View>
-                    <View style={styles.inputViewP}>
-                        <Text style={styles.txtLabelP}>
-                            Password
-                        </Text>
-                        <TextInput
-                            placeholder='enter password'
-                            style={styles.inputStylesP}
-                            onFocus={() => {
-                                StartInputAnim(inputAnim2, 1);
-                            }}
-                            onBlur={() => {
-                                StartInputAnim(inputAnim2, 0);
-                            }}
-                        />
-                        <TouchableOpacity style={styles.btnHidden}>
-                            <Icon name='eye' size={widthToDp(5)} color='#FFF' />
-                        </TouchableOpacity>
-                    </View>
-                    <View style={[styles.hLineP, { backgroundColor: mainLight }]} />
-                    <Animated.View style={[styles.hLineP, { transform: [{ scaleX: scaleX2 }] }]} />
-                </View>
-            </View>
-            <TouchableOpacity style={styles.btnForgetP}>
-                <Text style={styles.txtBtnForgetP}>Forget Password?</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.btnLoginP}>
-                <Text style={styles.txtBtnLoginP}>Login</Text>
-            </TouchableOpacity>
-            <View style={styles.btnJoinViewP}>
-                <Text style={styles.txtJoinP}>don't have account?</Text>
-                <TouchableOpacity style={styles.btnJoinP}>
-                    <Text style={styles.txtBtnJoinP}> Join Now</Text>
+                <TouchableOpacity style={isPortrait ? styles.btnForgetP : styles.btnForgetL}>
+                    <Text style={isPortrait ? styles.txtBtnForgetP : styles.txtBtnForgetL}>Forget Password?</Text>
                 </TouchableOpacity>
+                <TouchableOpacity style={isPortrait ? styles.btnLoginP : styles.btnLoginL}>
+                    <Text style={isPortrait ? styles.txtBtnLoginP : styles.txtBtnLoginL}>Login</Text>
+                </TouchableOpacity>
+                <View style={styles.btnJoinViewP}>
+                    <Text style={isPortrait ? styles.txtJoinP : styles.txtJoinL}>don't have account?</Text>
+                    <TouchableOpacity style={isPortrait ? styles.btnJoinP : styles.btnJoinL}>
+                        <Text style={isPortrait ? styles.txtBtnJoinP : styles.txtBtnJoinL}> Join Now</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     );
@@ -178,6 +178,20 @@ function responsiveStyles(screenInfo, w, h) {
             position: 'relative',
 
         },
+
+        itemViewsP: {
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column'
+        },
+
+        itemViewsL: {
+            marginLeft: 50,
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column'
+        },
         inputGroupViewP: {
             flexDirection: 'column',
             justifyContent: 'space-between',
@@ -188,11 +202,20 @@ function responsiveStyles(screenInfo, w, h) {
 
         },
 
+        inputGroupViewL: {
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: w(50),
+            height: h(40),
+        },
+
         inputItemViewP: {
             width: '100%',
             height: '45%',
             flexDirection: "row"
         },
+
         hLineP: {
             height: 2,
             width: '100%',
@@ -228,6 +251,12 @@ function responsiveStyles(screenInfo, w, h) {
             color: '#FFF',
             fontWeight: 'bold'
         },
+        txtLabelL: {
+            marginLeft: w(1),
+            fontSize: h(4),
+            color: '#FFF',
+            fontWeight: 'bold'
+        },
         inputStylesP: {
             width: '100%',
             color: '#FFF',
@@ -249,6 +278,19 @@ function responsiveStyles(screenInfo, w, h) {
             color: '#FFF'
         },
 
+        btnForgetL: {
+            paddingHorizontal: 5,
+            paddingVertical: 2,
+            marginTop: w(2)
+        },
+        txtBtnForgetL: {
+            fontSize: h(4),
+            fontWeight: 'bold',
+            color: '#FFF'
+        },
+
+
+
         btnLoginP: {
             width: w(70),
             height: h(6),
@@ -263,6 +305,22 @@ function responsiveStyles(screenInfo, w, h) {
             fontWeight: 'bold',
             color: main
         },
+
+        btnLoginL: {
+            width: h(70),
+            height: w(6),
+            borderRadius: w(7) / 2,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '#FFF',
+            margin: h(3)
+        },
+        txtBtnLoginL: {
+            fontSize: h(4),
+            fontWeight: 'bold',
+            color: main
+        },
+
         btnJoinViewP: {
             flexDirection: 'row'
         },
@@ -276,6 +334,20 @@ function responsiveStyles(screenInfo, w, h) {
             fontSize: w(4),
         },
         btnJoinP: {
+            paddingHorizontal: 5,
+        },
+
+
+        txtJoinL: {
+            color: mainLight,
+            fontSize: h(4),
+        },
+        txtBtnJoinL: {
+            color: '#FFF',
+            fontWeight: 'bold',
+            fontSize: h(4),
+        },
+        btnJoinL: {
             paddingHorizontal: 5,
         }
 
