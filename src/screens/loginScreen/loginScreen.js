@@ -1,6 +1,6 @@
-import React, {  useRef, useEffect, useState } from 'react';
-import { View,  Text, Animated,  TextInput, TouchableOpacity } from 'react-native';
-import { useFunctionalOrientaion } from '../utils/responsiveUtils';
+import React, { useRef, useEffect, useState } from 'react';
+import { View, Text, Animated, TextInput, TouchableOpacity } from 'react-native';
+import { useFunctionalOrientaion } from '../../utils/responsiveUtils';
 import Icon from 'react-native-vector-icons/Entypo';
 import { main, mainLight } from '../../utils/colors';
 import responsiveStyles from './styles';
@@ -8,11 +8,10 @@ import responsiveStyles from './styles';
 
 
 
-const Login = () => {
+const Login = (props) => {
 
     const { styles, isPortrait, heightToDp, widthToDp, width, height } = useFunctionalOrientaion(responsiveStyles);
 
-    console.log(width, height)
 
     const logoAnim = useRef(new Animated.Value(0)).current;
     const inputAnim1 = useRef(new Animated.Value(0)).current;
@@ -139,7 +138,11 @@ const Login = () => {
                 <TouchableOpacity style={isPortrait ? styles.btnForgetP : styles.btnForgetL}>
                     <Text style={isPortrait ? styles.txtBtnForgetP : styles.txtBtnForgetL}>Forget Password?</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={isPortrait ? styles.btnLoginP : styles.btnLoginL}>
+                <TouchableOpacity style={isPortrait ? styles.btnLoginP : styles.btnLoginL}
+                    onPress={() => {
+                        props.navigation.navigate('MyFlight')
+                    }}
+                >
                     <Text style={isPortrait ? styles.txtBtnLoginP : styles.txtBtnLoginL}>Login</Text>
                 </TouchableOpacity>
                 <View style={styles.btnJoinViewP}>

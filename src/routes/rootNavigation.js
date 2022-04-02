@@ -12,6 +12,7 @@ import Cart from '../screens/cartScreen';
 import Test from '../screens/testScreen';
 import Splash from '../screens/splashScreen/splashScreen';
 import Login from '../screens/loginScreen/loginScreen';
+import MyFlight from '../screens/myFlightScreen/myFlightScreen';
 
 
 
@@ -42,7 +43,7 @@ export default function RootNav() {
         }}
 
       >
-         <Stack.Screen name="Splash" component={Splash}
+        <Stack.Screen name="Splash" component={Splash}
           options={{
             headerShown: false,
 
@@ -54,11 +55,14 @@ export default function RootNav() {
 
           }}
         />
-        <Stack.Screen name="Cart" component={Cart}
+
+        <Stack.Screen name="MyFlight" component={MyFlight}
           options={{
-            headerShown: false
+            headerShown: false,
+
           }}
         />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
