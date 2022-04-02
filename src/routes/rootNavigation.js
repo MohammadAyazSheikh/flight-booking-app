@@ -10,8 +10,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import Home from '../screens/HomeScreen';
 import Cart from '../screens/cartScreen';
 import Test from '../screens/testScreen';
-import Splash from '../screens/splashScreen';
-import Login from '../screens/loginScreen';
+import Splash from '../screens/splashScreen/splashScreen';
+import Login from '../screens/loginScreen/loginScreen';
 
 
 

@@ -1,7 +1,8 @@
 import React, { Component, useRef, useEffect } from 'react';
-import { View, Image, Text, Animated, StyleSheet } from 'react-native';
-import { useFunctionalOrientaion } from '../utils/responsiveUtils';
-import { main } from '../utils/colors';
+import { View, Animated } from 'react-native';
+import { useFunctionalOrientaion } from '../../utils/responsiveUtils';
+import responsiveStyles from './styles';
+
 
 
 const Splash = ({ navigation }) => {
@@ -44,7 +45,7 @@ const Splash = ({ navigation }) => {
 
     return (
         <View style={styles.container} >
-            <Animated.Image source={require('../../assets/images/logoWhite.png')}
+            <Animated.Image source={require('../../../assets/images/logoWhite.png')}
                 style={[isPortrait ? styles.imageStyleP : styles.imageStyleL, {
                     transform: [
                         { scale },
@@ -58,29 +59,3 @@ const Splash = ({ navigation }) => {
 export default Splash;
 
 
-function responsiveStyles(screenInfo, w, h) {
-
-
-    return StyleSheet.create({
-        container: {
-            flex: 1,
-            backgroundColor: main,
-            justifyContent: 'center',
-            alignItems: 'center'
-        },
-        imageStyleL: {
-            width: h(40),
-            height: h(40),
-            resizeMode: 'contain',
-            position: 'relative'
-
-        },
-        imageStyleP: {
-            width: w(40),
-            height: w(40),
-            resizeMode: 'contain',
-            position: 'relative',
-
-        }
-    });
-}

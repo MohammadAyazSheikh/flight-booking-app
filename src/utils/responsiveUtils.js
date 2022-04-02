@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef, Component } from 'react';
 import { Dimensions, PixelRatio } from 'react-native';
 let { width, height } = Dimensions.get('window');
 
-
+//-------------For functional component--------------------------
 export const useFunctionalOrientaion = (callBack) => {
 
-    const [screenInfo, setScreenInfo] = useState(Dimensions.get('screen'));
+    const [screenInfo, setScreenInfo] = useState(Dimensions.get('window'));
 
 
     const widthToDp = (number) => {
@@ -28,7 +28,8 @@ export const useFunctionalOrientaion = (callBack) => {
 
         const onScreenChange = (change) => {
 
-            setScreenInfo(change.screen);
+            // setScreenInfo(change.screen);
+            setScreenInfo(Dimensions.get('window'))
         }
 
         const listener = Dimensions.addEventListener('change', onScreenChange);
@@ -49,7 +50,7 @@ export const useFunctionalOrientaion = (callBack) => {
 }
 
 
-
+// ----------------------------For Class Component---------------------------------------
 export const orientaionListener = (self) => {
 
 
@@ -57,7 +58,8 @@ export const orientaionListener = (self) => {
     const onScreenChange = (change) => {
 
         self.setState({
-            screenInfo: change.screen,
+            // screenInfo: change.screen,
+            screenInfo:Dimensions.get('window')
         })
     }
 
