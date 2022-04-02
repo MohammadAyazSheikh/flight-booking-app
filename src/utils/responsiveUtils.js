@@ -38,13 +38,13 @@ export const useFunctionalOrientaion = (callBack) => {
 
     }, [])
 
-
+    const isPortrait = screenInfo.height > screenInfo.width;
     return {
         ...screenInfo,
-        isPortrait: screenInfo.height > screenInfo.width,
+        isPortrait: isPortrait,
         widthToDp: widthToDp,
         heightToDp: heightToDp,
-        styles: callBack(screenInfo, widthToDp, heightToDp)
+        styles: callBack(screenInfo, widthToDp, heightToDp, isPortrait)
     };
 
 }
@@ -59,7 +59,7 @@ export const orientaionListener = (self) => {
 
         self.setState({
             // screenInfo: change.screen,
-            screenInfo:Dimensions.get('window')
+            screenInfo: Dimensions.get('window')
         })
     }
 
@@ -99,11 +99,11 @@ export const useClassOrientaion = (self, callBack) => {
         return PixelRatio.roundToNearestPixel((self.state.screenInfo.height * givenHeight) / 100);
 
     }
-
+    const isPortrait = self.state.screenInfo.height > self.state.screenInfo.width;
     return {
         ...self.state.screenInfo,
-        isPortrait: self.state.screenInfo.height > self.state.screenInfo.width,
-        styles: callBack(self.state.screenInfo, widthToDp, heightToDp),
+        isPortrait: isPortrait,
+        styles: callBack(self.state.screenInfo, widthToDp, heightToDp, isPortrait),
     }
 }
 

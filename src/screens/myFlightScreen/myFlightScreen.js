@@ -1,7 +1,7 @@
 import React, { Component, useRef, useEffect } from 'react';
-import { View, Animated } from 'react-native';
+import { View, Animated, Text, TouchableOpacity } from 'react-native';
 import { useFunctionalOrientaion } from '../../utils/responsiveUtils';
-import responsiveStyles from './styles';
+import responsiveStyles from './styles/styles';
 
 
 
@@ -13,8 +13,8 @@ const MyFlight = ({ navigation }) => {
 
     return (
         <View style={styles.container} >
-
-        </View>
+           
+        </View >
     );
 }
 

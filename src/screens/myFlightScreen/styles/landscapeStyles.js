@@ -1,0 +1,14 @@
+import { main, mainLight } from '../../../utils/colors';
+import { StyleSheet } from 'react-native';
+
+
+
+export default landscapeStyles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'red',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+});
