@@ -1,5 +1,6 @@
 import React, { Component, useRef, useEffect } from 'react';
-import { View, Animated } from 'react-native';
+import { View, Animated, StatusBar } from 'react-native';
+import { main } from '../../utils/colors';
 import { useFunctionalOrientaion } from '../../utils/responsiveUtils';
 import responsiveStyles from './styles';
 
@@ -45,6 +46,11 @@ const Splash = ({ navigation }) => {
 
     return (
         <View style={styles.container} >
+            <StatusBar
+                backgroundColor={main}
+                animated={true}
+                barStyle='light-content'
+            />
             <Animated.Image source={require('../../../assets/images/logoWhite.png')}
                 style={[isPortrait ? styles.imageStyleP : styles.imageStyleL, {
                     transform: [

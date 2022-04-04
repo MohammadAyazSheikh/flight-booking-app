@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { View, Text, Animated, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, Animated, TextInput, TouchableOpacity, StatusBar } from 'react-native';
 import { useFunctionalOrientaion } from '../../utils/responsiveUtils';
 import Icon from 'react-native-vector-icons/Entypo';
 import { main, mainLight } from '../../utils/colors';
@@ -74,6 +74,11 @@ const Login = (props) => {
 
     return (
         <View style={isPortrait ? styles.container : { ...styles.container, flexDirection: 'row' }} >
+            <StatusBar
+                backgroundColor={main}
+                animated={true}
+                barStyle='light-content'
+            />
             <Animated.Image source={require('../../../assets/images/logoWhite.png')}
                 style={[isPortrait ? styles.imageStyleP : styles.imageStyleL, {
                     transform: [
