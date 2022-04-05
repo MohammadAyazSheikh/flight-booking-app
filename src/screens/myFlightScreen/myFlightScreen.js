@@ -4,6 +4,7 @@ import { useFunctionalOrientaion } from '../../utils/responsiveUtils';
 import IconIonic from 'react-native-vector-icons/Ionicons';
 import responsiveStyles from './styles/styles';
 import { main } from '../../utils/colors';
+import FlightTimeDonut from '../../components/general/flightTimeDonut/flightTimeDonut'
 
 
 
@@ -19,13 +20,13 @@ const MyFlight = (props) => {
                 backgroundColor='#FFF'
                 animated={true}
                 barStyle='dark-content'
-                hidden = {isPortrait? false: true}
+                hidden={isPortrait ? false : true}
             />
 
             <View style={styles.topView}>
                 <View style={styles.topHeaderView}>
                     <TouchableOpacity
-                        onPress={() => { props.navigation.goBack()}}
+                        onPress={() => { props.navigation.goBack() }}
                     >
                         <IconIonic name='chevron-back' color={main} size={isPortrait ? widthToDp(10) : heightToDp(10)} />
                     </TouchableOpacity>
@@ -41,9 +42,17 @@ const MyFlight = (props) => {
                 </View>
             </View>
             <View style={styles.bottomView}>
-
+                <FlightTimeDonut
+                    percentage={50}
+                    radius={widthToDp(12)}
+                    color='#FFF'
+                    strokeWidth={5}
+                    time = '20 mins'
+                    iconSize={widthToDp(10)}
+                    fontSize = {widthToDp(3.5)}
+                />
             </View>
-        </View >
+        </View>
     );
 }
 

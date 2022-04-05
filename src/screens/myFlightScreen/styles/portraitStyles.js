@@ -54,7 +54,9 @@ export default portraitStyles = (w, h) => {
             width: w(100),
             height: h(75),
             borderTopLeftRadius: h(75) / 15,
-            borderTopRightRadius: h(75) / 15
+            borderTopRightRadius: h(75) / 15,
+            justifyContent:'center',
+            alignItems:'center'
         }
 
     });
