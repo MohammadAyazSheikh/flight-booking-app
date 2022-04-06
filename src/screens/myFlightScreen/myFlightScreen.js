@@ -4,8 +4,10 @@ import { useFunctionalOrientaion } from '../../utils/responsiveUtils';
 import IconIonic from 'react-native-vector-icons/Ionicons';
 import responsiveStyles from './styles/styles';
 import { main } from '../../utils/colors';
-import FlightTimeDonut from '../../components/general/flightTimeDonut/flightTimeDonut'
-
+import FlightTimeDonut from '../../components/general/flightTimeDonut/flightTimeDonut';
+import AimatedButton from '../../components/general/animatedButton/animatedButton';
+import AnimatedButton from '../../components/general/animatedButton/animatedButton';
+import IconMt from 'react-native-vector-icons/MaterialCommunityIcons'
 
 
 const MyFlight = (props) => {
@@ -42,20 +44,43 @@ const MyFlight = (props) => {
                 </View>
             </View>
             <View style={styles.bottomView}>
+                <AnimatedButton
+                    duration={1000}
+                    color='#fff'
+                    strokeWidth={2}
+                    width={widthToDp(20)}
+                    height={widthToDp(20)}
+                    Icon={({ style }) => {
+                        return (
+                            <IconMt size={widthToDp(10)} name='airplane-takeoff' style={style} color={main} />
+                        )
+                    }}
+                    onPress={null}
+                />
                 <FlightTimeDonut
                     percentage={50}
                     radius={widthToDp(12)}
                     color='#FFF'
                     strokeWidth={5}
-                    time = '20 mins'
+                    time='20 mins'
                     iconSize={widthToDp(10)}
-                    fontSize = {widthToDp(3.5)}
+                    fontSize={widthToDp(4.5)}
                 />
             </View>
         </View>
     );
 }
 
+/*
+  <FlightTimeDonut
+        percentage={50}
+        radius={widthToDp(12)}
+        color='#FFF'
+        strokeWidth={5}
+        time = '20 mins'
+        iconSize={widthToDp(10)}
+        fontSize = {widthToDp(4.5)}
+    />
+*/
 export default MyFlight;
-
 
