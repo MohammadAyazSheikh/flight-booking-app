@@ -18,7 +18,7 @@ export default portraitStyles = (w, h) => {
             height: h(25),
             justifyContent: 'center',
             alignItems: 'center',
-            paddingHorizontal:'5%'
+            paddingHorizontal: '5%'
         },
         topHeaderView: {
             width: '100%',
@@ -27,10 +27,10 @@ export default portraitStyles = (w, h) => {
             justifyContent: 'space-between',
             alignItems: 'center'
         },
-        imgUser:{
-            width:w(20),
-            height:w(20),
-            borderRadius:w(20)/10
+        imgUser: {
+            width: w(20),
+            height: w(20),
+            borderRadius: w(20) / 10
         },
         headingView: {
             width: '100%',
@@ -42,11 +42,11 @@ export default portraitStyles = (w, h) => {
             color: main,
             fontSize: w(10),
             fontWeight: 'bold',
-            textShadowColor:'#000',
-            textShadowRadius:1,
-            textShadowOffset:{
-                width:1,
-                height:1
+            textShadowColor: '#000',
+            textShadowRadius: 1,
+            textShadowOffset: {
+                width: 1,
+                height: 1
             }
         },
         bottomView: {
@@ -55,9 +55,44 @@ export default portraitStyles = (w, h) => {
             height: h(75),
             borderTopLeftRadius: h(75) / 15,
             borderTopRightRadius: h(75) / 15,
-            justifyContent:'center',
-            alignItems:'center'
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'row',
+            overflow: 'hidden'
+        },
+        timeView: {
+            backgroundColor: main,
+            height: h(20),
+            width: '30%',
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        detailsView: {
+            flex: 1,
+            backgroundColor: main,
+            width: '35%',
+            height: h(20),
+            alignItems: 'center',
+            justifyContent: 'space-between',
+        },
+        txtCityShort: {
+            fontSize: w(12),
+            color: '#FFF',
+            // fontWeight: 'bold'
+        },
+        txtCity: {
+            fontSize: w(4),
+            color: '#FFF',
+            fontWeight: "bold"
+        },
+        txtDateHeading: {
+            color: mainLight
+        },
+        txtDate: {
+            color: '#FFF',
+            fontWeight: 'bold'
         }
+
 
     });
 }

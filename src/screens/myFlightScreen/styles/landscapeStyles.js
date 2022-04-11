@@ -54,7 +54,24 @@ export default landscapeStyles = (w, h) => {
             width: w(100),
             height: h(65),
             borderTopLeftRadius: h(75) / 15,
-            borderTopRightRadius: h(75) / 15
+            borderTopRightRadius: h(75) / 15,
+            justifyContent: 'center',
+            alignItems: 'center',
+            overflow: 'hidden',
+            flexDirection:'row'
+        },
+
+        detailsView: {
+            flex: 1,
+            backgroundColor: 'tomato',
+            width: '35%',
+            height: h(50)
+
+        },
+        timeView: {
+            backgroundColor: '#FFF',
+            height: h(50),
+            width: '30%'
         }
 
     });

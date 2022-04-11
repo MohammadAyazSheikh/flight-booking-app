@@ -89,10 +89,10 @@ export default function AnimatedButton({
                 </G>
             </Svg>
             {
-                Icon ?
+                !Icon ?
                     <Icon style={{ position: 'absolute' }} />
                     :
-                    <IconMt size={!width > height ? width / 2 : height / 2} name='plus' style={{ position: 'absolute' }} color={'#FFF'} />
+                    <IconMt size={!width > height ? width / 2 : height / 2} name='plus' style={{ position: 'absolute' }} color={'#000'} />
             }
         </TouchableOpacity>
 
