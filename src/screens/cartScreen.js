@@ -1,5 +1,5 @@
 import React, { Component, useRef, useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, Animated, Dimensions, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, StyleSheet, Image, Animated, Dimensions, StatusBar,TouchableOpacity, FlatList } from 'react-native';
 import { backColor, foreColor, widthToPer, heightToPer } from '../utils/config';
 import IconIO from 'react-native-vector-icons/Ionicons';
 import IconET from 'react-native-vector-icons/Entypo';
@@ -66,17 +66,13 @@ const RenderProduct = ({ name, price, image, setTotalPrice }) => {
     );
 }
 
-
 const mapStateToProps = state => {
     return {
         cart: state?.Cart
     }
 }
 
-
 const Cart = (props) => {
-
-
 
     const [totalPrice, setTotalPrice] = useState(() => 0);
     useEffect(() => {
@@ -86,8 +82,6 @@ const Cart = (props) => {
         });
         setTotalPrice(total)
     }, [])
-
-
 
     return (
         <View style={styles.container}>
@@ -226,7 +220,6 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
-
     btnQty: {
         backgroundColor: 'tomato',
         elevation: 5,
@@ -272,5 +265,3 @@ const styles = StyleSheet.create({
         color:'#FFF'
     }
 });
-
-
